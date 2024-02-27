@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:techtrack/Pages/MainLoginPage.dart';
 
 class AccessPage extends StatelessWidget {
   const AccessPage({super.key});
@@ -15,10 +16,9 @@ class AccessPage extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.black,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           color: Colors.white,
           onPressed: () {
-            // Navigate back to the previous page (IntroPage)
             Navigator.pop(context);
           },
         ),
@@ -48,7 +48,10 @@ class AccessPage extends StatelessWidget {
             width: 200,
             child: ElevatedButton(
               onPressed: () {
-                // Handle button press
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) =>  LoginScreen()),
+                );
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor:

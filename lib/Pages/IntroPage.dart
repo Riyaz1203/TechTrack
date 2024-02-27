@@ -36,6 +36,7 @@ class IntroPage extends StatelessWidget {
           ),
           const SizedBox(
             height: 50,
+            
           ),
           SizedBox(
             height: 50,
@@ -44,7 +45,7 @@ class IntroPage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => AccessPage()),
+                  MaterialPageRoute(builder: (context) => const AccessPage()),
                 );
                 // Handle button press
               },
