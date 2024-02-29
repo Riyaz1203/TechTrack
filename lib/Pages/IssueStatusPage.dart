@@ -53,17 +53,17 @@ class IssueStatusPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Issue : ${issue['issue']}',
+                          'Issue                       :   ${issue['issue']}',
                           style: const TextStyle(fontSize: 18.0),
                         ),
                         const SizedBox(height: 8.0),
                         Text(
-                          'Status : ${issue['status']}',
+                          'Status                         :   ${issue['status']}',
                           style: const TextStyle(fontSize: 16.0),
                         ),
                         const SizedBox(height: 8.0),
                         Text(
-                          'Date Of Completion : ${issue['date_of_completion']}',
+                          'Date Of Completion  :   ${issue['date_of_completion']}',
                           style: const TextStyle(fontSize: 16.0),
                         ),
                       ],
