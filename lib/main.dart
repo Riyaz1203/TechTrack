@@ -6,16 +6,20 @@ import 'package:techtrack/Pages/Homepage.dart';
 import 'package:techtrack/Pages/MainMenu.dart';
 import 'package:techtrack/Pages/MembersLoginPage.dart';
 import 'package:techtrack/Pages/RaiseIssuePage.dart';
+=======
+import 'package:techtrack/Pages/MembersLoginPage.dart';
 import 'Pages/IntroPage.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+import 'Pages/IssueStatusPage.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
-  _initializeFirebase();
 }
 
 class MyApp extends StatelessWidget {
@@ -29,13 +33,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: const RaiseIssue(),
+
+      home: IssueStatusPage(),
+
     );
   }
-}
-
-_initializeFirebase() async {
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
 }

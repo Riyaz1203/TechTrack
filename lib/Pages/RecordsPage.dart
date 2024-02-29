@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:techtrack/Pages/AssignPage.dart';
 import 'package:techtrack/Pages/BorrowListPage.dart';
-import 'package:techtrack/Pages/BorrowerPage.dart';
-import 'package:techtrack/Pages/HistoryPage.dart';
-import 'package:techtrack/Pages/IssuseStatusPage.dart';
-import 'package:techtrack/Pages/ItemPage.dart';
 import 'package:techtrack/Pages/NewBorrowPage.dart';
 import 'package:techtrack/Pages/ReturnedListPage.dart';
-import 'package:techtrack/Pages/UsersPage.dart';
+
+import 'IssueStatusPage.dart';
 
 class RecordsPage extends StatelessWidget {
   const RecordsPage({super.key});
@@ -47,7 +45,7 @@ class RecordsPage extends StatelessWidget {
           MaterialButton(
             onPressed: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const RecordsPage()));
+                  MaterialPageRoute(builder: (context) => IssueStatusPage()));
             },
             color: const Color.fromARGB(255, 239, 239, 239),
             height: 50, // Button height
@@ -67,7 +65,7 @@ class RecordsPage extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const IssueStatusPage(),
+                    builder: (context) => const NewBorrowerPage(),
                   ));
             },
             color: const Color.fromARGB(255, 239, 239, 239),
@@ -79,28 +77,6 @@ class RecordsPage extends StatelessWidget {
 
             child: const Text(
               'New',
-              style: TextStyle(fontSize: 20),
-            ),
-          ),
-          const SizedBox(height: 10),
-          MaterialButton(
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const NewBorrowerPage(),
-                  ));
-              // Handle button press
-            },
-            color: const Color.fromARGB(255, 239, 239, 239),
-            height: 50, // Button height
-            elevation: 1, // Set the elevation value
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.zero, // No rounded corners
-            ),
-
-            child: const Text(
-              'Borrower List',
               style: TextStyle(fontSize: 20),
             ),
           ),
@@ -122,7 +98,7 @@ class RecordsPage extends StatelessWidget {
             ),
 
             child: const Text(
-              'Returned List',
+              'Borrower List',
               style: TextStyle(fontSize: 20),
             ),
           ),
@@ -133,6 +109,28 @@ class RecordsPage extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => const ReturnedListPage(),
+                  ));
+              // Handle button press
+            },
+            color: const Color.fromARGB(255, 239, 239, 239),
+            height: 50, // Button height
+            elevation: 1, // Set the elevation value
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.zero, // No rounded corners
+            ),
+
+            child: const Text(
+              'Returned List',
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
+          const SizedBox(height: 10),
+          MaterialButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const AssignPage(),
                   ));
               // Handle button press
             },
