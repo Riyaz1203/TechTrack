@@ -2,20 +2,35 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'DashBoard.dart';
 
-class MembersLoginPage extends StatelessWidget {
+class MemberLoginPage extends StatelessWidget {
+
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  MembersLoginPage({super.key});
+  MemberLoginPage({super.key});
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Login'),
+        title: const Text(
+          'Member Login ',
+          style: TextStyle(color: Colors.white),
+        ),
         centerTitle: true,
         backgroundColor: Colors.black,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -30,7 +45,11 @@ class MembersLoginPage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             const Text(
+<<<<<<< main
+              'Sign in',
+=======
               'Tech Track',
+>>>>>>> main
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -110,5 +129,4 @@ class MembersLoginPage extends StatelessWidget {
     }
   }
 }
-
 
