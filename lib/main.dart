@@ -1,15 +1,28 @@
+import 'package:flutter/material.dart';
+import 'package:techtrack/Pages/AccessPage.dart';
+import 'package:techtrack/Pages/AssignPage.dart';
+import 'package:techtrack/Pages/DashBoard.dart';
+import 'package:techtrack/Pages/Homepage.dart';
+import 'package:techtrack/Pages/MainMenu.dart';
+import 'package:techtrack/Pages/MembersLoginPage.dart';
+import 'package:techtrack/Pages/RaiseIssuePage.dart';
+import 'package:techtrack/Pages/MembersLoginPage.dart';
+import 'Pages/IntroPage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:techtrack/Pages/BorrowerPage.dart';
 
+import 'Pages/IssueStatusPage.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   runApp(const MyApp());
-  _initializeFirebase();
 }
 
 class MyApp extends StatelessWidget {
@@ -24,12 +37,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: BorrowerPage(),
+
     );
   }
-}
-
-_initializeFirebase() async {
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
 }
