@@ -45,11 +45,8 @@ class MemberLoginPage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             const Text(
-<<<<<<< main
               'Sign in',
-=======
-              'Tech Track',
->>>>>>> main
+
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,

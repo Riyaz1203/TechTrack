@@ -1,16 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:techtrack/Pages/AccessPage.dart';
-import 'package:techtrack/Pages/AssignPage.dart';
-import 'package:techtrack/Pages/DashBoard.dart';
-import 'package:techtrack/Pages/Homepage.dart';
-import 'package:techtrack/Pages/MainMenu.dart';
-import 'package:techtrack/Pages/MembersLoginPage.dart';
-import 'package:techtrack/Pages/RaiseIssuePage.dart';
-=======
-import 'package:techtrack/Pages/MembersLoginPage.dart';
-import 'Pages/IntroPage.dart';
 import 'package:firebase_core/firebase_core.dart';
-
+import 'package:techtrack/Pages/IntroPage.dart';
 import 'Pages/IssueStatusPage.dart';
 import 'firebase_options.dart';
 
@@ -33,9 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-
-      home: IssueStatusPage(),
-
+      home: IntroPage(),
     );
   }
 }
