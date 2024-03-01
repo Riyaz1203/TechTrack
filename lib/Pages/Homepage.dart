@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:techtrack/Pages/AssignPage.dart';
-import 'package:techtrack/Pages/BorrowListPage.dart';
-import 'package:techtrack/Pages/NewBorrowPage.dart';
-import 'package:techtrack/Pages/ReturnedListPage.dart';
+import 'package:techtrack/Pages/BorrowerPage.dart';
+import 'package:techtrack/Pages/HistoryPage.dart';
+import 'package:techtrack/Pages/ItemPage.dart';
+import 'package:techtrack/Pages/UsersPage.dart';
 
-import 'IssueStatusPage.dart';
+import '../auth/auth.dart';
+import 'IntroPage.dart';
+import 'RecordsPage.dart';
 
-class RecordsPage extends StatelessWidget {
-  const RecordsPage({super.key});
+class Homepage extends StatelessWidget {
+  const Homepage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,7 @@ class RecordsPage extends StatelessWidget {
           },
         ),
         title: const Text(
-          'Records Page',
+          ' HomePage',
           style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
@@ -45,7 +47,7 @@ class RecordsPage extends StatelessWidget {
           MaterialButton(
             onPressed: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => IssueStatusPage()));
+                  MaterialPageRoute(builder: (context) => const RecordsPage()));
             },
             color: const Color.fromARGB(255, 239, 239, 239),
             height: 50, // Button height
@@ -55,7 +57,7 @@ class RecordsPage extends StatelessWidget {
             ),
 
             child: const Text(
-              'Issues',
+              'Raise an Issue',
               style: TextStyle(fontSize: 20),
             ),
           ),
@@ -65,7 +67,7 @@ class RecordsPage extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const NewBorrowerPage(),
+                    builder: (context) => const ItemPage(),
                   ));
             },
             color: const Color.fromARGB(255, 239, 239, 239),
@@ -76,7 +78,7 @@ class RecordsPage extends StatelessWidget {
             ),
 
             child: const Text(
-              'New',
+              'Issue Status',
               style: TextStyle(fontSize: 20),
             ),
           ),
@@ -86,29 +88,7 @@ class RecordsPage extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const BorrowerListPage(),
-                  ));
-              // Handle button press
-            },
-            color: const Color.fromARGB(255, 239, 239, 239),
-            height: 50, // Button height
-            elevation: 1, // Set the elevation value
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.zero, // No rounded corners
-            ),
-
-            child: const Text(
-              'Borrower List',
-              style: TextStyle(fontSize: 20),
-            ),
-          ),
-          const SizedBox(height: 10),
-          MaterialButton(
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const ReturnedListPage(),
+                    builder: (context) => const BorrowerPage(),
                   ));
               // Handle button press
             },
@@ -120,19 +100,15 @@ class RecordsPage extends StatelessWidget {
             ),
 
             child: const Text(
-              'Returned List',
+              'Profile',
               style: TextStyle(fontSize: 20),
             ),
           ),
           const SizedBox(height: 10),
+
           MaterialButton(
             onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const AssignPage(),
-                  ));
-              // Handle button press
+              _logout(context);
             },
             color: const Color.fromARGB(255, 239, 239, 239),
             height: 50, // Button height
@@ -142,13 +118,27 @@ class RecordsPage extends StatelessWidget {
             ),
 
             child: const Text(
-              'Assign',
+              'Log Out',
               style: TextStyle(fontSize: 20),
             ),
           ),
-          const SizedBox(height: 10),
         ],
       ),
     );
+  }
+}
+
+void _logout(BuildContext context) async {
+  Auth auth = Auth();
+  try {
+    await auth.signOut();
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (context) => const IntroPage()),
+      (route) => false,
+    );
+  } catch (error) {
+    print('Failed to log out: $error');
+    // Handle logout failure
   }
 }

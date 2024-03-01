@@ -8,7 +8,6 @@ class MemberLoginPage extends StatelessWidget {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   MemberLoginPage({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,6 +27,7 @@ class MemberLoginPage extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
+
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -43,6 +43,7 @@ class MemberLoginPage extends StatelessWidget {
             const SizedBox(height: 20),
             const Text(
               'Sign in',
+
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
