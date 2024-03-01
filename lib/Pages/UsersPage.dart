@@ -24,14 +24,205 @@ class usersPage extends StatelessWidget {
               icon: const Icon(Icons.menu))
         ],
       ),
-      body: Column(
-        children: [
-          Container(
-            height: 200,
-            width: 800,
-            color: Colors.grey,
-          )
-        ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
+          child: Column(
+            children: [
+              Container(
+                width: 800,
+                height: 180,
+                color: Colors.grey,
+                child: Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '   ID Number     : Firebase',
+                        style: TextStyle(
+                            fontSize: 21, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(height: 8.0),
+                      Text(
+                        '   Name              : Firebase',
+                        style: TextStyle(
+                            fontSize: 21, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(height: 8.0),
+                      Text(
+                        '   Department   : Firebase',
+                        style: TextStyle(
+                            fontSize: 21, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(height: 8.0),
+                      Text(
+                        '   Type               : Firebase',
+                        style: TextStyle(
+                            fontSize: 21, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 16.0),
+              Container(
+                width: 800,
+                height: 180,
+                color: Colors.grey,
+                child: Padding(
+                  padding: EdgeInsets.only(
+                      top: 16.0, bottom: 16, left: 16, right: 30),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '   ID Number     : Firebase',
+                        style: TextStyle(
+                            fontSize: 21, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(height: 8.0),
+                      Text(
+                        '   Name              : Firebase',
+                        style: TextStyle(
+                            fontSize: 21, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(height: 8.0),
+                      Text(
+                        '   Department   : Firebase',
+                        style: TextStyle(
+                            fontSize: 21, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(height: 8.0),
+                      Text(
+                        '   Type               : Firebase',
+                        style: TextStyle(
+                            fontSize: 21, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 16.0),
+              Container(
+                width: 800,
+                height: 180,
+                color: Colors.grey,
+                child: Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '   ID Number     : Firebase',
+                        style: TextStyle(
+                            fontSize: 21, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(height: 8.0),
+                      Text(
+                        '   Name              : Firebase',
+                        style: TextStyle(
+                            fontSize: 21, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(height: 8.0),
+                      Text(
+                        '   Department   : Firebase',
+                        style: TextStyle(
+                            fontSize: 21, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(height: 8.0),
+                      Text(
+                        '   Type               : Firebase',
+                        style: TextStyle(
+                            fontSize: 21, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 16.0),
+              Container(
+                width: 800,
+                height: 180,
+                color: Colors.grey,
+                child: Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '   ID Number     : Firebase',
+                        style: TextStyle(
+                            fontSize: 21, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(height: 8.0),
+                      Text(
+                        '   Name              : Firebase',
+                        style: TextStyle(
+                            fontSize: 21, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(height: 8.0),
+                      Text(
+                        '   Department   : Firebase',
+                        style: TextStyle(
+                            fontSize: 21, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(height: 8.0),
+                      Text(
+                        '   Type               : Firebase',
+                        style: TextStyle(
+                            fontSize: 21, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 16.0),
+              Container(
+                width: 800,
+                height: 180,
+                color: Colors.grey,
+                child: Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '   ID Number     : Firebase',
+                        style: TextStyle(
+                            fontSize: 21, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(height: 8.0),
+                      Text(
+                        '   Name              : Firebase',
+                        style: TextStyle(
+                            fontSize: 21, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(height: 8.0),
+                      Text(
+                        '   Department   : Firebase',
+                        style: TextStyle(
+                            fontSize: 21, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(height: 8.0),
+                      Text(
+                        '   Type               : Firebase',
+                        style: TextStyle(
+                            fontSize: 21, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 16.0),
+            ],
+          ),
+        ),
       ),
     );
   }
