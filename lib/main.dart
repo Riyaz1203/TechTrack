@@ -3,6 +3,7 @@ import 'package:techtrack/Pages/AccessPage.dart';
 import 'package:techtrack/Pages/AssignPage.dart';
 import 'package:techtrack/Pages/DashBoard.dart';
 import 'package:techtrack/Pages/Homepage.dart';
+import 'package:techtrack/Pages/Items_page.dart';
 import 'package:techtrack/Pages/MainMenu.dart';
 import 'package:techtrack/Pages/MembersLoginPage.dart';
 import 'package:techtrack/Pages/RaiseIssuePage.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: const RaiseIssue(),
+      home: const ItemsPage(),
     );
   }
 }
