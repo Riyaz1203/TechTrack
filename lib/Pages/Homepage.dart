@@ -65,7 +65,7 @@ class Homepage extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const ItemPage(),
+                    builder: (context) => const ItemsPage(),
                   ));
             },
             color: const Color.fromARGB(255, 239, 239, 239),
