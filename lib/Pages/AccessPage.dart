@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:techtrack/Pages/MainLoginPage.dart';
+import 'package:techtrack/Pages/MembersLoginPage.dart';
 
 class AccessPage extends StatelessWidget {
   const AccessPage({super.key});
@@ -50,7 +51,7 @@ class AccessPage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) =>  LoginScreen()),
+                  MaterialPageRoute(builder: (context) => LoginScreen()),
                 );
               },
               style: ElevatedButton.styleFrom(
@@ -71,7 +72,10 @@ class AccessPage extends StatelessWidget {
             width: 200,
             child: ElevatedButton(
               onPressed: () {
-                // Handle button press
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MemberLoginPage()),
+                );
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor:
