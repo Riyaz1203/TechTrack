@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:techtrack/Pages/IntroPage.dart';
+import 'package:techtrack/Pages/HistoryPage.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: const IntroPage(),
+      home: const HistoryPage(),
     );
   }
 }
