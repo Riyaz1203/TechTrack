@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'ItemDisplayPage.dart';
 
 class ItemsPage extends StatelessWidget {
-  const ItemsPage({Key? key});
+  const ItemsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +69,6 @@ class ItemsPage extends StatelessWidget {
                             // fit: BoxFit.cover,
                           ),
                         ),
-
                         // Details Column
                         Expanded(
                           child: Padding(

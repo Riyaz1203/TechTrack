@@ -4,6 +4,8 @@ import 'package:techtrack/Pages/HistoryPage.dart';
 import 'package:techtrack/Pages/IntroPage.dart';
 import 'package:techtrack/Pages/IssueStatusPage.dart';
 import 'package:techtrack/Pages/ItemPage.dart';
+import 'package:techtrack/Pages/NewBorrowPage.dart';
+import 'package:techtrack/Pages/RaiseIssuePage.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -25,7 +27,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: const ItemsPage(),
+      home:  NewBorrowerPage(),
     );
   }
 }

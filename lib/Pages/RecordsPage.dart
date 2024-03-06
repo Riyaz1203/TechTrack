@@ -65,7 +65,7 @@ class RecordsPage extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const NewBorrowerPage(),
+                    builder: (context) =>  NewBorrowerPage(),
                   ));
             },
             color: const Color.fromARGB(255, 239, 239, 239),
