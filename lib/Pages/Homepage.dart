@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:techtrack/Pages/BorrowerPage.dart';
 import 'package:techtrack/Pages/IssueStatusPage.dart';
-import 'package:techtrack/Pages/ItemPage.dart';
 import 'package:techtrack/Pages/RaiseIssuePage.dart';
-
 import '../auth/api.dart';
 import 'IntroPage.dart';
-import 'RecordsPage.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({super.key});

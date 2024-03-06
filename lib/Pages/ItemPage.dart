@@ -1,130 +1,99 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+import 'ItemDisplayPage.dart';
+
 class ItemsPage extends StatelessWidget {
-  const ItemsPage({super.key});
+  const ItemsPage({Key? key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: const Text(
+          'Items',
+          style: TextStyle(color: Colors.white),
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.black,
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back,
             color: Colors.white,
           ),
           onPressed: () {
+            // Navigate to previous page
             Navigator.pop(context);
           },
         ),
-        title: const Text(
-          'Items Page',
-          style: TextStyle(color: Colors.white),
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.black,
       ),
-      body: ListView(
-        children: const [
-          // Item 1
-          ItemCard(
-            imageUrl:
-                'https://t4.ftcdn.net/jpg/03/24/42/21/360_F_324422176_Lgn7NTeFyNaUKIDu0Ppls1u8zb8wsKS4.jpg',
-            Category: 'Item 1',
-            Brand: 'Acer',
-            Quantity: '25 units',
-          ),
+      body: Container(
+        color: Colors.grey[200], // Set background color
+        padding: const EdgeInsets.all(16.0), // Set padding
+        child: StreamBuilder<QuerySnapshot>(
+          stream: FirebaseFirestore.instance.collection('Items').snapshots(),
+          builder: (context, snapshot) {
+            if (!snapshot.hasData) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            final items = snapshot.data?.docs.reversed.toList();
 
-          // Keyboard
-          ItemCard(
-            imageUrl:
-                'https://images.pexels.com/photos/12211/pexels-photo-12211.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-            Category: 'Keyboard',
-            Brand: 'Acer',
-            Quantity: '25 units',
-          ),
-          ItemCard(
-            imageUrl:
-                'https://images.pexels.com/photos/12211/pexels-photo-12211.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-            Category: 'Keyboard',
-            Brand: 'Acer',
-            Quantity: '25 units',
-          ),
-          ItemCard(
-            imageUrl:
-                'https://images.pexels.com/photos/12211/pexels-photo-12211.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-            Category: 'Keyboard',
-            Brand: 'Acer',
-            Quantity: '25 units',
-          ),
-          ItemCard(
-            imageUrl:
-                'https://images.pexels.com/photos/12211/pexels-photo-12211.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-            Category: 'Keyboard',
-            Brand: 'Acer',
-            Quantity: '25 units',
-          ),
-          ItemCard(
-            imageUrl:
-                'https://images.pexels.com/photos/12211/pexels-photo-12211.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-            Category: 'Keyboard',
-            Brand: 'Acer',
-            Quantity: '25 units',
-          )
+            return ListView.builder(
+              itemCount: items!.length,
+              itemBuilder: (context, index) {
+                final item = items[index];
+                return GestureDetector(
+                  // Wrap each item with GestureDetector for onTap functionality
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ItemsDisplayPage(
+                          item: item, // Pass item data to ItemsDisplayPage
+                        ),
+                      ),
+                    );
+                  },
+                  child: Card(
+                    margin: const EdgeInsets.all(1.0),
+                    child: Row(
+                      children: [
+                        // Image Column
+                        SizedBox(
+                          width: 100.0,
+                          height: 100.0,
+                          child: Image.network(
+                            '${item['image_url']}',
+                            // fit: BoxFit.cover,
+                          ),
+                        ),
 
-          // Add more ItemCards as needed
-        ],
-      ),
-    );
-  }
-}
-
-class ItemCard extends StatelessWidget {
-  final String imageUrl;
-  final String Category;
-  final String Brand;
-  final String Quantity;
-
-  const ItemCard({
-    super.key,
-    required this.imageUrl,
-    required this.Category,
-    required this.Brand,
-    required this.Quantity,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.all(16.0),
-      child: Row(
-        children: [
-          // Image Column
-          SizedBox(
-            width: 100.0,
-            height: 100.0,
-            child: Image.network(
-              imageUrl,
-              fit: BoxFit.cover,
-            ),
-          ),
-
-          // Details Column
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Category: $Category',
+                        // Details Column
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Category  : ${item['category']}',
+                                ),
+                                Text('Brand       : ${item['brand']}'),
+                                Text('Quantity   : ${item['quantity']}'),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                  Text('Price: $Brand'),
-                  Text('Quantity: $Quantity'),
-                ],
-              ),
-            ),
-          ),
-        ],
+                );
+              },
+            );
+          },
+        ),
       ),
     );
   }
