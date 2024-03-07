@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:techtrack/Pages/AccessPage.dart';
 import 'package:techtrack/Pages/AssignPage.dart';
+import 'package:techtrack/Pages/AssigningPage.dart';
 import 'package:techtrack/Pages/DashBoard.dart';
 import 'package:techtrack/Pages/Homepage.dart';
 import 'package:techtrack/Pages/ItemsDisplayPage.dart';
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home:  NewBorrowerPage(),
+      home: const AssigningPage(),
     );
   }
 }
