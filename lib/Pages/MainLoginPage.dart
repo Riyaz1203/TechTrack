@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'DashBoard.dart';
 
-class LoginScreen extends StatelessWidget {
+class MainLoginScreen extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  LoginScreen({super.key});
+  MainLoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

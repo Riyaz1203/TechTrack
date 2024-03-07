@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'DashBoard.dart';
+import 'Homepage.dart';
 
 class MemberLoginPage extends StatelessWidget {
-
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   MemberLoginPage({super.key});
-
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +28,6 @@ class MemberLoginPage extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -46,7 +43,6 @@ class MemberLoginPage extends StatelessWidget {
             const SizedBox(height: 20),
             const Text(
               'Sign in',
-
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -104,7 +100,7 @@ class MemberLoginPage extends StatelessWidget {
           context,
           MaterialPageRoute(
               builder: (context) =>
-                  const Dashboard()), // Replace DashboardPage with your actual dashboard page
+                  const Homepage()), // Replace DashboardPage with your actual dashboard page
         );
       } else {
         // Handle sign in failed
@@ -126,4 +122,3 @@ class MemberLoginPage extends StatelessWidget {
     }
   }
 }
-

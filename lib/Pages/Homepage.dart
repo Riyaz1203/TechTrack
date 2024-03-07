@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:techtrack/Pages/BorrowerPage.dart';
-import 'package:techtrack/Pages/ItemPage.dart';
-
+import 'package:techtrack/Pages/IssueStatusPage.dart';
+import 'package:techtrack/Pages/RaiseIssuePage.dart';
 import '../auth/api.dart';
 import 'IntroPage.dart';
-import 'RecordsPage.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({super.key});
@@ -45,7 +44,7 @@ class Homepage extends StatelessWidget {
           MaterialButton(
             onPressed: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const RecordsPage()));
+                  MaterialPageRoute(builder: (context) =>  RaiseIssue()));
             },
             color: const Color.fromARGB(255, 239, 239, 239),
             height: 50, // Button height
@@ -65,7 +64,7 @@ class Homepage extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const ItemPage(),
+                    builder: (context) => const IssueStatusPage(),
                   ));
             },
             color: const Color.fromARGB(255, 239, 239, 239),

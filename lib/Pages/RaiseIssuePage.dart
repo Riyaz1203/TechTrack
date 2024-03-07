@@ -1,7 +1,15 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class RaiseIssue extends StatelessWidget {
-  const RaiseIssue({super.key});
+  RaiseIssue({super.key});
+
+  final selectRoomController = TextEditingController();
+  final dateController = TextEditingController();
+  final timeController = TextEditingController();
+  final itemController = TextEditingController();
+  final timeLimitController = TextEditingController();
+  final issueDetailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -17,37 +25,43 @@ class RaiseIssue extends StatelessWidget {
           },
         ),
         title: const Text(
-          'RaiseIssue',
+          'Raise Issue',
           style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
         backgroundColor: Colors.black,
       ),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(30.0),
+          padding: const EdgeInsets.all(30.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextField(
-                decoration: InputDecoration(labelText: 'Select Room'),
+              TextFormField(
+                controller: selectRoomController,
+                decoration: const InputDecoration(labelText: 'Select Room'),
               ),
-              TextField(
-                decoration: InputDecoration(labelText: 'Date'),
+              TextFormField(
+                controller: dateController,
+                decoration: const InputDecoration(labelText: 'Date'),
               ),
-              TextField(
-                decoration: InputDecoration(labelText: 'Time'),
+              TextFormField(
+                controller: timeController,
+                decoration: const InputDecoration(labelText: 'Time'),
               ),
-              TextField(
-                decoration: InputDecoration(labelText: 'Item'),
+              TextFormField(
+                controller: itemController,
+                decoration: const InputDecoration(labelText: 'Item'),
               ),
-              TextField(
-                decoration: InputDecoration(labelText: 'Time limit'),
+              TextFormField(
+                controller: timeLimitController,
+                decoration: const InputDecoration(labelText: 'Time Limit'),
               ),
-              TextField(
-                decoration: InputDecoration(labelText: 'Issue Detail'),
+              TextFormField(
+                controller: issueDetailController,
+                decoration: const InputDecoration(labelText: 'Issue Detail'),
               ),
-              SizedBox(height: 100),
+              const SizedBox(height: 100),
             ],
           ),
         ),
@@ -56,7 +70,33 @@ class RaiseIssue extends StatelessWidget {
         padding:
             const EdgeInsets.only(left: 50, right: 50, top: 16, bottom: 100),
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed: () async {
+            CollectionReference collRef =
+                FirebaseFirestore.instance.collection('raiseIssue');
+            await collRef.add({
+              'select_room': selectRoomController.text,
+              'date': dateController.text,
+              'time': timeController.text,
+              'item': itemController.text,
+              'time_limit': timeLimitController.text,
+              'issue_detail': issueDetailController.text
+            });
+            // Clear text fields after submitting
+            selectRoomController.clear();
+            dateController.clear();
+            timeController.clear();
+            itemController.clear();
+            timeLimitController.clear();
+            issueDetailController.clear();
+            // Show a snackbar to indicate that the issue has been raised
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                backgroundColor: Colors.amber,
+                content: Text('Issue has been raised'),
+                duration: Duration(seconds: 2),
+              ),
+            );
+          },
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.blue, // Set the background color to blue
           ),
