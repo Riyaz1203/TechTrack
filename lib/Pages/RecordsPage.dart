@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:techtrack/Pages/AssignPage.dart';
 import 'package:techtrack/Pages/NewBorrowPage.dart';
 import 'package:techtrack/Pages/ReturnedListPage.dart';
-
 import 'BorrowListPage.dart';
-import 'BorrowerDisplayPage.dart';
 import 'IssueStatusPage.dart';
 
 class RecordsPage extends StatelessWidget {

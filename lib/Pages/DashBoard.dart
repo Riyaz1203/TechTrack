@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:techtrack/Pages/MainMenu.dart';
@@ -37,21 +38,69 @@ class Dashboard extends StatelessWidget {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          const CalendarWidget(), // Calendar widget at the top
-          const SizedBox(height: 50),
-          Expanded(
-            child: ListView(
-              children: const [
-                ListItem(title: 'Item 1'),
-                ListItem(title: 'Item 2'),
-                ListItem(title: 'Item 3'),
-                // Add more list items as needed
-              ],
-            ),
-          ),
-        ],
+      body: StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance
+            .collection('ConfirmedBorrow')
+            .snapshots(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+
+          final confirmedBorrowers = snapshot.data!.docs.reversed.toList();
+
+          return Column(
+            children: [
+              const CalendarWidget(), // Calendar widget at the top
+              const SizedBox(height: 20),
+              const Text(
+                'Borrowers',
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: DataTable(
+                    columns: const [
+                      DataColumn(label: Text('Name')),
+                      DataColumn(label: Text('Item')),
+                      DataColumn(label: Text('Status')),
+                      DataColumn(label: Text('Type')),
+                    ],
+                    rows: confirmedBorrowers
+                        .map<DataRow>((borrower) => DataRow(
+                              cells: [
+                                DataCell(Text(
+                                  borrower['name'].toString(),
+                                  style: const TextStyle(fontSize: 12),
+                                )),
+                                DataCell(
+                                  Text(
+                                    borrower['category'].toString(),
+                                    style: const TextStyle(
+                                        fontSize: 12, color: Colors.red),
+                                  ),
+                                ),
+                                DataCell(Text(
+                                  borrower['status'].toString(),
+                                  style: const TextStyle(
+                                      fontSize: 12, color: Colors.green),
+                                )),
+                                DataCell(Text(
+                                  borrower['type'].toString(),
+                                  style: const TextStyle(
+                                      fontSize: 12, color: Colors.blue),
+                                )),
+                              ],
+                            ))
+                        .toList(),
+                  ),
+                ),
+              ),
+            ],
+          );
+        },
       ),
     );
   }
@@ -66,20 +115,6 @@ class CalendarWidget extends StatelessWidget {
       firstDay: DateTime.utc(2010, 10, 16),
       lastDay: DateTime.utc(2030, 3, 14),
       focusedDay: DateTime.now(),
-    );
-  }
-}
-
-class ListItem extends StatelessWidget {
-  final String title;
-
-  const ListItem({super.key, required this.title});
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(title),
-      // Add more list item configurations as needed
     );
   }
 }
