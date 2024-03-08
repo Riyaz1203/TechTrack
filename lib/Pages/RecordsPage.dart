@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:techtrack/Pages/AssignPage.dart';
-import 'package:techtrack/Pages/BorrowListPage.dart';
 import 'package:techtrack/Pages/NewBorrowPage.dart';
 import 'package:techtrack/Pages/ReturnedListPage.dart';
 
+import 'BorrowListPage.dart';
+import 'BorrowerDisplayPage.dart';
 import 'IssueStatusPage.dart';
 
 class RecordsPage extends StatelessWidget {
@@ -65,7 +66,7 @@ class RecordsPage extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>  NewBorrowerPage(),
+                    builder: (context) => NewBorrowerPage(),
                   ));
             },
             color: const Color.fromARGB(255, 239, 239, 239),
@@ -86,7 +87,7 @@ class RecordsPage extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const BorrowerListPage(),
+                    builder: (context) => BorrowerListPage(),
                   ));
               // Handle button press
             },

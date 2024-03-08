@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:techtrack/Pages/ItemPage.dart';
 
 class ConfirmBorrowPage extends StatefulWidget {
   final String serial_id;
@@ -8,6 +9,7 @@ class ConfirmBorrowPage extends StatefulWidget {
   final String brand;
   final String category;
   final String price;
+  final String image;
   const ConfirmBorrowPage(
       {super.key,
       required this.serial_id,
@@ -15,7 +17,8 @@ class ConfirmBorrowPage extends StatefulWidget {
       required this.status,
       required this.brand,
       required this.category,
-      required this.price});
+      required this.price,
+      required this.image});
 
   @override
   State<ConfirmBorrowPage> createState() => _ConfirmBorrowPageState();
@@ -39,6 +42,7 @@ class _ConfirmBorrowPageState extends State<ConfirmBorrowPage> {
   final statusController = TextEditingController();
 
   final brandController = TextEditingController();
+  final imageController = TextEditingController();
 
   @override
   void initState() {
@@ -48,6 +52,7 @@ class _ConfirmBorrowPageState extends State<ConfirmBorrowPage> {
     modelNoController.text = widget.model_no;
     serialIdController.text = widget.serial_id;
     categoryController.text = widget.category;
+    imageController.text = widget.image;
   }
 
   @override
@@ -112,6 +117,10 @@ class _ConfirmBorrowPageState extends State<ConfirmBorrowPage> {
                 controller: statusController,
                 decoration: const InputDecoration(labelText: 'Status'),
               ),
+              TextFormField(
+                controller: imageController,
+                decoration: const InputDecoration(labelText: 'Product Image'),
+              ),
             ],
           ),
         ),
@@ -132,7 +141,8 @@ class _ConfirmBorrowPageState extends State<ConfirmBorrowPage> {
               'model_no': modelNoController.text,
               'serial_id': serialIdController.text,
               'brand': brandController.text,
-              'status': statusController.text
+              'status': statusController.text,
+              'image_url': imageController.text
             });
             // Clear text fields after submitting
             idNumberController.clear();
@@ -144,6 +154,7 @@ class _ConfirmBorrowPageState extends State<ConfirmBorrowPage> {
             serialIdController.clear();
             brandController.clear();
             statusController.clear();
+            imageController.clear();
 
             // Show a snackbar to indicate that the issue has been raised
             ScaffoldMessenger.of(context).showSnackBar(
@@ -153,6 +164,8 @@ class _ConfirmBorrowPageState extends State<ConfirmBorrowPage> {
                 duration: Duration(seconds: 2),
               ),
             );
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => ItemsPage()));
           },
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.blue, // Set the background color to blue

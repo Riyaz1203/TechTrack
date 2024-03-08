@@ -85,7 +85,7 @@ class Homepage extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const BorrowerPage(),
+                    builder: (context) => const BorrowPage(),
                   ));
               // Handle button press
             },

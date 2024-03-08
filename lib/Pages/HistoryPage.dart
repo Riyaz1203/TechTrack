@@ -53,17 +53,17 @@ class HistoryPage extends StatelessWidget {
                       children: [
                         Text(
                           'ID number             :   ${historyy['user']}',
-                          style: const TextStyle(fontSize: 18.0),
+                          style: const TextStyle(fontSize: 14.0),
                         ),
                         const SizedBox(height: 8.0),
                         Text(
                           'Name                         :   ${historyy['description']}',
-                          style: const TextStyle(fontSize: 16.0),
+                          style: const TextStyle(fontSize: 14.0),
                         ),
                         const SizedBox(height: 8.0),
                         Text(
                           'Department               :   ${historyy['time']}',
-                          style: const TextStyle(fontSize: 16.0),
+                          style: const TextStyle(fontSize: 14.0),
                         ),
                         const SizedBox(height: 8.0),
                         Text(

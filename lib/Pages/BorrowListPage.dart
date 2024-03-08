@@ -1,134 +1,79 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:techtrack/Pages/MainMenu.dart';
 
 class BorrowerListPage extends StatelessWidget {
   const BorrowerListPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Users"),
+        title: const Text(
+          'Borrower List',
+          style: TextStyle(color: Colors.white),
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.black,
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back,
-            color: Colors.black,
+            color: Colors.white,
           ),
           onPressed: () {
+            // Navigate to Member login page
             Navigator.pop(context);
           },
         ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const MainMenu()));
-            },
-            icon: const Icon(Icons.menu),
-          ),
-        ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              height: screenHeight, // You might want to adjust this
-              width: screenWidth,
-              color: Colors.grey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Image.asset("assets/keyboard.png"),
-                  const SizedBox(height: 40),
-                  const Text(
-                    "ID Number         : Firebase",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 23,
+      body: Container(
+        color: Colors.grey[200], // Set background color
+        padding: const EdgeInsets.all(16.0), // Set padding
+        child: StreamBuilder<QuerySnapshot>(
+          stream: FirebaseFirestore.instance
+              .collection('ConfirmedBorrow')
+              .snapshots(),
+          builder: (context, snapshot) {
+            if (!snapshot.hasData) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            final confirmBorrow = snapshot.data?.docs.reversed.toList();
+
+            return ListView.builder(
+              itemCount: confirmBorrow!.length,
+              itemBuilder: (context, index) {
+                final confirmborrow = confirmBorrow[index];
+                return Card(
+                  elevation: 3,
+                  margin: const EdgeInsets.only(
+                      bottom: 16.0), // Add space between items
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Borrower Name                                   :   ${confirmborrow['name']}',
+                          style: const TextStyle(fontSize: 12.0),
+                        ),
+                        const SizedBox(height: 8.0),
+                        Text(
+                          'Borrower Item                                     :   ${confirmborrow['category']}',
+                          style: const TextStyle(fontSize: 12.0),
+                        ),
+                        const SizedBox(height: 8.0),
+                        Text(
+                          'Borrower List Model                           :   ${confirmborrow['model_no']}',
+                          style: const TextStyle(fontSize: 12.0),
+                        ),
+                      ],
                     ),
                   ),
-                  const SizedBox(height: 20),
-                  const Text(
-                    "Name                 : Firebase",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 23,
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  const Text(
-                    "Department      : Firebase",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 23,
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  const Text(
-                    "Type                  : Firebase",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 23,
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  const Text(
-                    "category           : Firebase",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 23,
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  const Text(
-                    "Model No          : Firebase",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 23,
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  const Text(
-                    "Serial No           : Firebase",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 23,
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  const Text(
-                    "Brand                : Firebase",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 23,
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  const Text(
-                    "Status               : Firebase",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 23,
-                    ),
-                  ),
-                  // Add other user details similarly
-                ],
-              ),
-            )
-          ],
+                );
+              },
+            );
+          },
         ),
       ),
     );

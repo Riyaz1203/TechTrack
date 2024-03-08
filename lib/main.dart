@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:techtrack/Pages/ItemPage.dart';
+import 'package:techtrack/Pages/BorrowListPage.dart';
+import 'package:techtrack/Pages/RecordsPage.dart';
+import 'package:techtrack/Pages/ReturnedListPage.dart';
+import 'Pages/IntroPage.dart';
+import 'Pages/MainMenu.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -22,7 +26,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: ItemsPage(),
+      home: RecordsPage(),
     );
   }
 }

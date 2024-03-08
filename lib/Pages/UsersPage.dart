@@ -54,22 +54,22 @@ class usersPage extends StatelessWidget {
                       children: [
                         Text(
                           'ID Number             :   ${users['id_number']}',
-                          style: const TextStyle(fontSize: 18.0),
+                          style: const TextStyle(fontSize: 14.0),
                         ),
                         const SizedBox(height: 8.0),
                         Text(
                           'Name                         :   ${users['name']}',
-                          style: const TextStyle(fontSize: 16.0),
+                          style: const TextStyle(fontSize: 14.0),
                         ),
                         const SizedBox(height: 8.0),
                         Text(
                           'Department               :   ${users['department']}',
-                          style: const TextStyle(fontSize: 16.0),
+                          style: const TextStyle(fontSize: 14.0),
                         ),
                         const SizedBox(height: 8.0),
                         Text(
                           'Type                           :   ${users['type']}',
-                          style: const TextStyle(fontSize: 16.0),
+                          style: const TextStyle(fontSize: 14.0),
                         ),
                       ],
                     ),

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:techtrack/Pages/ConfirmBorrowPage.dart';
 
-class ItemsDisplayPage extends StatelessWidget {
+class BorrowerDisplayPage extends StatelessWidget {
   final DocumentSnapshot item; // Define a variable to store item data
 
-  const ItemsDisplayPage({super.key, required this.item});
+  const BorrowerDisplayPage({super.key, required this.item});
 
   @override
   Widget build(BuildContext context) {
@@ -48,11 +48,27 @@ class ItemsDisplayPage extends StatelessWidget {
                 child: Container(
                   color: Color.fromARGB(255, 231, 231, 231),
                   padding: const EdgeInsets.only(
-                      left: 0, right: 0, top: 50, bottom: 50),
+                      left: 0, right: 0, top: 20, bottom: 20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      Text(
+                        '                        ID No               :    ${item['id_number']}',
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                      Text(
+                        '                        Name              :    ${item['name']}',
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                      Text(
+                        '                        Depart             :    ${item['department']}',
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                      Text(
+                        '                        Type                :    ${item['type']}',
+                        style: const TextStyle(fontSize: 16),
+                      ),
                       Text(
                         '                        Category         :    ${item['category']}',
                         style: const TextStyle(fontSize: 16),
@@ -73,18 +89,12 @@ class ItemsDisplayPage extends StatelessWidget {
                         '                        Brand              :    ${item['brand']}',
                         style: const TextStyle(fontSize: 16),
                       ),
-                      Text(
-                        '                        Quantity          :    ${item['quantity']}',
-                        style: const TextStyle(fontSize: 16),
-                      ),
+
                       Text(
                         '                        Status             :    ${item['status']}',
                         style: const TextStyle(fontSize: 16),
                       ),
-                      Text(
-                        '                        Price               :    ${item['price']}',
-                        style: const TextStyle(fontSize: 16),
-                      ),
+
                       // Add more details here
                     ],
                   ),
@@ -93,7 +103,7 @@ class ItemsDisplayPage extends StatelessWidget {
             ),
 
             // Submit button
-            const SizedBox(height: 20.0), // Add some spacing
+            const SizedBox(height: 10.0), // Add some spacing
             Padding(
               padding: const EdgeInsets.only(
                   left: 10, bottom: 30, right: 10, top: 70),
@@ -117,7 +127,7 @@ class ItemsDisplayPage extends StatelessWidget {
                       Colors.blue, // Set the background color to blue
                 ),
                 child: const Text(
-                  'Confirm',
+                  'Return',
                   style: TextStyle(color: Colors.white),
                 ),
               ),

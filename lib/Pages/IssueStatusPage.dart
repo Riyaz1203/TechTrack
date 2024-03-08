@@ -45,8 +45,8 @@ class IssueStatusPage extends StatelessWidget {
                 final issue = issueData[index];
                 return Card(
                   elevation: 3,
-                  margin:
-                      const EdgeInsets.only(bottom: 16.0), // Add space between items
+                  margin: const EdgeInsets.only(
+                      bottom: 16.0), // Add space between items
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Column(
@@ -54,17 +54,17 @@ class IssueStatusPage extends StatelessWidget {
                       children: [
                         Text(
                           'Issue                       :   ${issue['issue']}',
-                          style: const TextStyle(fontSize: 18.0),
+                          style: const TextStyle(fontSize: 14.0),
                         ),
                         const SizedBox(height: 8.0),
                         Text(
                           'Status                         :   ${issue['status']}',
-                          style: const TextStyle(fontSize: 16.0),
+                          style: const TextStyle(fontSize: 14.0),
                         ),
                         const SizedBox(height: 8.0),
                         Text(
                           'Date Of Completion  :   ${issue['date_of_completion']}',
-                          style: const TextStyle(fontSize: 16.0),
+                          style: const TextStyle(fontSize: 14.0),
                         ),
                       ],
                     ),
