@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:techtrack/Pages/ConfirmBorrowPage.dart';
 
 class ItemsDisplayPage extends StatelessWidget {
   final DocumentSnapshot item; // Define a variable to store item data
 
-  const ItemsDisplayPage({Key? key, required this.item});
+  const ItemsDisplayPage({super.key, required this.item});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +14,7 @@ class ItemsDisplayPage extends StatelessWidget {
         backgroundColor: Colors.black,
         title: Text(
           item['category'],
-          style: TextStyle(color: Colors.white),
+          style: const TextStyle(color: Colors.white),
         ), // Use the category name directly
         leading: IconButton(
           icon: const Icon(
@@ -45,7 +46,7 @@ class ItemsDisplayPage extends StatelessWidget {
             Expanded(
               child: Center(
                 child: Container(
-                  color: Color.fromARGB(255, 243, 229, 229),
+                  color: const Color.fromARGB(255, 243, 229, 229),
                   padding: const EdgeInsets.only(
                       left: 0, right: 0, top: 50, bottom: 50),
                   child: Column(
@@ -54,35 +55,35 @@ class ItemsDisplayPage extends StatelessWidget {
                     children: [
                       Text(
                         '                        Category         :    ${item['category']}',
-                        style: TextStyle(fontSize: 16),
+                        style: const TextStyle(fontSize: 16),
                       ),
                       Text(
                         '                        Model No        :    ${item['model_no']}',
-                        style: TextStyle(fontSize: 16),
+                        style: const TextStyle(fontSize: 16),
                       ),
                       Text(
                         '                        Serial Id          :    ${item['serial_id']}',
-                        style: TextStyle(fontSize: 16),
+                        style: const TextStyle(fontSize: 16),
                       ),
                       Text(
                         '                        Type                :    ${item['type']}',
-                        style: TextStyle(fontSize: 16),
+                        style: const TextStyle(fontSize: 16),
                       ),
                       Text(
                         '                        Brand              :    ${item['brand']}',
-                        style: TextStyle(fontSize: 16),
+                        style: const TextStyle(fontSize: 16),
                       ),
                       Text(
                         '                        Quantity          :    ${item['quantity']}',
-                        style: TextStyle(fontSize: 16),
+                        style: const TextStyle(fontSize: 16),
                       ),
                       Text(
                         '                        Status             :    ${item['status']}',
-                        style: TextStyle(fontSize: 16),
+                        style: const TextStyle(fontSize: 16),
                       ),
                       Text(
                         '                        Price               :    ${item['price']}',
-                        style: TextStyle(fontSize: 16),
+                        style: const TextStyle(fontSize: 16),
                       ),
                       // Add more details here
                     ],
@@ -98,6 +99,17 @@ class ItemsDisplayPage extends StatelessWidget {
                   left: 10, bottom: 30, right: 10, top: 70),
               child: ElevatedButton(
                 onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ConfirmBorrowPage(
+                            brand:item['brand'],
+                            category:item['category'],
+                            model_no:item['model_no'],
+                            serial_id:item['serial_id'],
+                            status:item['status'],
+                            price:item['price'],
+                          )));
                   // Implement any action for submit button
                 },
                 style: ElevatedButton.styleFrom(
@@ -105,7 +117,7 @@ class ItemsDisplayPage extends StatelessWidget {
                       Colors.blue, // Set the background color to blue
                 ),
                 child: const Text(
-                  'Confirm Browser',
+                  'Confirm',
                   style: TextStyle(color: Colors.white),
                 ),
               ),

@@ -12,7 +12,7 @@ import 'package:techtrack/Pages/RaiseIssuePage.dart';
 import 'Pages/IntroPage.dart';
 
 import 'package:firebase_core/firebase_core.dart';
-import 'package:techtrack/Pages/NewBorrowPage.dart';
+import 'package:techtrack/Pages/ItemPage.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -35,6 +35,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const AssigningPage(),
+
     );
   }
 }
