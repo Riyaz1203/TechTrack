@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:techtrack/Pages/MainLoginPage.dart';
 import 'package:techtrack/Pages/MembersLoginPage.dart';
+import 'RegistorPage.dart';
 
 class AccessPage extends StatelessWidget {
   const AccessPage({super.key});
@@ -83,6 +84,29 @@ class AccessPage extends StatelessWidget {
               ),
               child: const Text(
                 'Members Login',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          SizedBox(
+            height: 50,
+            width: 200,
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => RegisterPage()),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor:
+                    const Color(0xFF224957), // Setting button background color
+              ),
+              child: const Text(
+                'Register',
                 style: TextStyle(color: Colors.white),
               ),
             ),
