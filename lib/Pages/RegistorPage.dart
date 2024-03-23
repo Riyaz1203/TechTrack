@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:techtrack/Pages/AccessPage.dart';
 import 'package:techtrack/Pages/Add_Details.dart';
 
 class RegisterPage extends StatelessWidget {
