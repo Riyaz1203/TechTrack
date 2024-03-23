@@ -53,7 +53,7 @@ class IssueStatusPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Issue                       :   ${issue['issue']}',
+                          'Issue                           :   ${issue['issue']}',
                           style: const TextStyle(fontSize: 14.0),
                         ),
                         const SizedBox(height: 8.0),

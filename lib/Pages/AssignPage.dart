@@ -14,12 +14,12 @@ class AssignPage extends StatefulWidget {
 class _AssignPageState extends State<AssignPage> {
   // Replace these names with your actual list of names
   List<String> technicianNames = [
-    'Gopal',
-    'Kiran',
-    'Riyaz',
-    'Puli',
-    'Bai',
-    'Karthi',
+    'Manoj',
+    'Aadhavan',
+    'Saravanan',
+    'Hemnath',
+    'Rahul',
+    'Sabari',
   ];
   String selectedTechnician = '';
 

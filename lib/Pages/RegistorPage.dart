@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:techtrack/Pages/AccessPage.dart';
+import 'package:techtrack/Pages/Add_Details.dart';
 
 class RegisterPage extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
@@ -101,7 +102,7 @@ class RegisterPage extends StatelessWidget {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => AccessPage(), // Navigate to dashboard
+            builder: (context) => AddDetails(), // Navigate to dashboard
           ),
         );
       } else {

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+// ignore: camel_case_types
 class usersPage extends StatelessWidget {
   const usersPage({super.key});
 
@@ -53,7 +54,7 @@ class usersPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'ID Number             :   ${users['id_number']}',
+                          'ID Number                 :   ${users['id_number']}',
                           style: const TextStyle(fontSize: 14.0),
                         ),
                         const SizedBox(height: 8.0),

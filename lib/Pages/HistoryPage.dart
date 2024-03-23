@@ -52,7 +52,7 @@ class HistoryPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'ID number             :   ${historyy['user']}',
+                          'ID number                  :   ${historyy['user']}',
                           style: const TextStyle(fontSize: 14.0),
                         ),
                         const SizedBox(height: 8.0),
@@ -62,13 +62,13 @@ class HistoryPage extends StatelessWidget {
                         ),
                         const SizedBox(height: 8.0),
                         Text(
-                          'Department               :   ${historyy['time']}',
+                          'Department              :   ${historyy['time']}',
                           style: const TextStyle(fontSize: 14.0),
                         ),
                         const SizedBox(height: 8.0),
                         Text(
                           'Type                           :   ${historyy['date']}',
-                          style: const TextStyle(fontSize: 16.0),
+                          style: const TextStyle(fontSize: 14.0),
                         ),
                       ],
                     ),
